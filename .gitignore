@@ -1,0 +1,26 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore environment files
+.env
+
+
+# Ignore log files
+logs/
+*.log
+
+# Ignore build directories
+build/
+dist/
+
+# Ignore dependency directories
+.pnp
+.pnp.js
+
+# Ignore profiling data
+.nyc_output/
+coverage/
+.vuepress/dist/
+
+# Ignore documentation build output
+docs/.vuepress/dist
