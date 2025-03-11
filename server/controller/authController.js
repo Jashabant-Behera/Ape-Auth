@@ -81,7 +81,7 @@ export const login = async (req, res) => {
 		if (!user) {
 			return res
 				.status(401)
-				.json({ success: false, message: "Invalid credentials" });
+				.json({ success: false, message: "User Not Found" });
 		}
 
 		const isMatch = await bcrypt.compare(password, user.password);
@@ -89,7 +89,7 @@ export const login = async (req, res) => {
 		if (!isMatch) {
 			return res
 				.status(401)
-				.json({ success: false, message: "Invalid credentials" });
+				.json({ success: false, message: "Incorrect Password" });
 		}
 
 		const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
