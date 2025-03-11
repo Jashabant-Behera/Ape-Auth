@@ -22,7 +22,7 @@ if (
 }
 connectDB();
 
-const allowedorigins = ["http://localhost:5173"];
+const allowedorigins = ["http://localhost:5173", "https://ape-auth.vercel.app"];
 
 app.use(express.json());
 app.use(cookieParser());
