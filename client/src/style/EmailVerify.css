@@ -1,0 +1,101 @@
+.email-verify-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url('../assets/Signup_page.jpg') center/cover no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.email-verify-box {
+  background: rgba(0, 0, 0, 0.263);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 380px;
+  max-width: 90%;
+}
+
+.email-verify-box h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+.email-verify-box p {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 1.5rem;
+}
+
+.verification-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.verification-inputs input {
+  width: 40px;
+  height: 50px;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  backdrop-filter: blur(10px);
+  outline: none;
+}
+
+.verification-inputs input::placeholder {
+  color: #d0d0d0;
+}
+
+.verification-inputs input:focus {
+  border: 1px solid #facc15;
+}
+
+.email-verify-box button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #facc15;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.email-verify-box button:hover {
+  background: #ffcc00;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .email-verify-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center center;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  .email-verify-box {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .verification-inputs input {
+    width: 35px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+}

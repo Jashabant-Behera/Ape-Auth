@@ -1,0 +1,130 @@
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem;
+}
+
+.login-bg {
+  background-image: url('../assets/Login_page.jpg');
+}
+
+.signup-bg {
+  background-image: url('../assets/Signup_page.jpg');
+}
+
+.auth-box {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.auth-box h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+.auth-box p {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 1.5rem;
+}
+
+.auth-input {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.092);
+  border-radius: 6px;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.auth-input img {
+  width: 22px;
+  margin-right: 10px;
+}
+
+.auth-input input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  color: white;
+}
+
+.auth-input input::placeholder {
+  color: #d0d0d0;
+}
+
+.auth-box button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #facc15;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin-bottom: 10px;
+}
+
+.auth-box button:hover {
+  background: #ffcc00;
+  transform: scale(1.05);
+}
+
+.auth-box p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #fff;
+  margin: 10px;
+}
+
+.auth-box span {
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  color: #fff;
+}
+
+.auth-box span:hover {
+  color: #facc15;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-position: center center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .auth-box {
+    width: 100%;
+    max-width: 90%;
+  }
+}

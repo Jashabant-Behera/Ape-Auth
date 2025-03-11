@@ -1,0 +1,112 @@
+.navbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.573);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.user-menu {
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  color: black;
+  background: #facc15;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: 0.3s ease-in-out;
+}
+
+.monkeylogo {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+.dropdown {
+  width:fit-content;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  z-index: 1010;
+  transition: 0.3s ease-in-out;
+}
+
+.user-menu:hover .dropdown {
+  display: block;
+}
+
+.dropdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-item,
+.logout {
+  padding: 10px 15px;
+  font-size: 14px;
+  gap: 8px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.dropdown-item:hover,
+.logout:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-radius: 8px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.login-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  background: #facc15;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.login-btn:hover {
+  background: #fbbf24;
+  transform: scale(1.05);
+}

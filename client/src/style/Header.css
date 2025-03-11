@@ -1,0 +1,61 @@
+.header {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.342);
+  backdrop-filter: blur(4px);
+  padding-bottom: 100px;
+  z-index: 500;
+}
+
+.heading1 {
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.custom-font {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #facc15;
+}
+
+.heading2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  z-index: 2;
+}
+
+.caption {
+  font-size: 1rem;
+  max-width: 600px;
+  margin-top: 1rem;
+  line-height: 1.5;
+  z-index: 2;
+}
+
+.btn {
+  margin-top: 1.5rem;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  background: #facc15;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.btn:hover {
+  background: #fbbf24;
+  transform: scale(1.05);
+}
