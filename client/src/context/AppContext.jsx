@@ -42,7 +42,7 @@ const AppContextProvider = (props) => {
   };
 
   useEffect(() => {
-    getAuthState();
+    getUserData();
   }, []);
 
   const value = {
