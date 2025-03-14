@@ -12,10 +12,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 connectDB();
 
-const allowedorigins = [
-	"https://ape-auth-hd990r2lx-jashabant-beheras-projects.vercel.app",
-	"http://localhost:5173",
-];
+const allowedorigins = ["https://ape-auth.vercel.app", "http://localhost:5173"];
 
 app.use(express.json());
 app.use(cookieParser());
