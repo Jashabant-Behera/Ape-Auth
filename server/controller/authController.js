@@ -29,7 +29,6 @@ export const signup = async (req, res) => {
 
 		const hashedPassword = await bcrypt.hash(password, 10);
 
-		//this is for the database for new user
 		const user = new userModel({ name, email, password: hashedPassword });
 
 		await user.save();
@@ -154,7 +153,6 @@ export const sendOTP = async (req, res) => {
 			from: process.env.SENDER_EMAIL,
 			to: user.email,
 			subject: "Account Verification",
-			// text: `Your OTPis ${OTP}. Verify your account using this OTP. Do not share this OTP.`,
 			html: EMAIL_VERIFY_TEMPLATE.replace("{{otp}}", OTP).replace(
 				"{{email}}",
 				user.email

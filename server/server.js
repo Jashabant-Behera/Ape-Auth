@@ -10,16 +10,6 @@ import userRouter from "./routes/userRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 4000;
-if (
-	!process.env.MONGODB_URI ||
-	!process.env.JWT_SECRET ||
-	!process.env.SMTP_USER ||
-	!process.env.SMTP_PASS ||
-	!process.env.SENDER_EMAIL
-) {
-	console.error("Missing required environment variables.");
-	process.exit(1);
-}
 connectDB();
 
 const allowedorigins = [
@@ -38,7 +28,7 @@ app.use(
 
 //API Endpoints
 app.get("/", (req, res) => {
-	res.send("API WORKING");
+	res.send("API IS WORKING");
 });
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);

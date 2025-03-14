@@ -19,7 +19,6 @@ const ResetPassword = () => {
 
   const inputRefs = useRef([]);
 
-  // Function to request OTP
   const onSubmitEmail = async (e) => {
     e.preventDefault();
     try {
@@ -38,17 +37,15 @@ const ResetPassword = () => {
     }
   };
 
-  // Function to verify OTP
   const onSubmitOTP = async (e) => {
     e.preventDefault();
     const OTPArray = inputRefs.current.map((el) => el.value);
     const enteredOTP = OTPArray.join('');
 
     setOTP(enteredOTP);
-    setOTPSubmit(true); // Fix: Ensure OTP submission leads to next step
+    setOTPSubmit(true);
   };
 
-  // OTP Input Handling
   const handleInput = (e, index) => {
     if (e.target.value.length === 1 && index < inputRefs.current.length - 1) {
       inputRefs.current[index + 1].focus();
@@ -75,7 +72,6 @@ const ResetPassword = () => {
     });
   };
 
-  // Function to reset password
   const onSubmitNewPassword = async (e) => {
     e.preventDefault();
     try {
@@ -109,7 +105,6 @@ const ResetPassword = () => {
           />
         </div>
 
-        {/* Email Submission Form */}
         {!emailSent && (
           <form onSubmit={onSubmitEmail}>
             <h1>Reset Password</h1>
@@ -128,7 +123,6 @@ const ResetPassword = () => {
           </form>
         )}
 
-        {/* OTP Submission Form */}
         {!OTPSubmit && emailSent && (
           <form onSubmit={onSubmitOTP}>
             <h1>Verify OTP</h1>
@@ -154,7 +148,6 @@ const ResetPassword = () => {
           </form>
         )}
 
-        {/* New Password Form */}
         {OTPSubmit && (
           <form onSubmit={onSubmitNewPassword}>
             <h1>Set New Password</h1>

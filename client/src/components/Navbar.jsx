@@ -17,7 +17,7 @@ const Navbar = () => {
     try {
       axios.defaults.withCredentials = true;
 
-      const { data } = await axios.post(backendURL + '/api/auth/verifyOTP');
+      const { data } = await axios.post(`${backendURL}/api/auth/verifyOTP`);
 
       if (data.success) {
         navigate('/emailVerify');
@@ -33,7 +33,7 @@ const Navbar = () => {
   const logout = async () => {
     try {
       axios.defaults.withCredentials = true;
-      const { data } = await axios.post(backendURL + '/api/auth/logout');
+      const { data } = await axios.post(`${backendURL}/api/auth/logout`);
 
       toast.success(data.message);
       data.success && setIsLoggedin(false);
@@ -65,11 +65,7 @@ const Navbar = () => {
                   Verify Email
                 </li>
               )}
-              <li
-                key="logout"
-                onClick={logout}
-                className="logout"
-              >
+              <li key="logout" onClick={logout} className="logout">
                 Logout
                 <img
                   src={assets.logout_icon}
