@@ -216,12 +216,29 @@ export const verifyEmail = async (req, res) => {
 
 export const isAuthenticated = async (req, res) => {
 	try {
-		return res.status(200).json({ success: true, message: "Authorized" });
+        const { userId } = req.body;
+
+        if (!userId) {
+			return res.status(401).json({ success: false, message: "User not authenticated" });
+		}
+
+        const user = await userModel.findById(userId);
+		if (!user) {
+			return res.status(404).json({ success: false, message: "User not found" });
+		}
+        
+        if (!user.isAccountVerified) {
+			return res.status(403).json({ success: false, message: "Account not verified" });
+		}
+
+		return res
+			.status(200)
+			.json({ success: true, message: "User is authenticated" });
 	} catch (error) {
-		return res.status(500).json({
-			success: false,
-			message: "An error occurred during authentication check",
-		});
+		console.error(error);
+		return res
+			.status(500)
+			.json({ success: false, message: "Authentication error" });
 	}
 };
 
