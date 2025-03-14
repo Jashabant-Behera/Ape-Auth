@@ -28,7 +28,7 @@ const AppContextProvider = (props) => {
           getUserData();
         }
       } catch (error) {
-        toast.error(error.message);
+        toast.error(error.response?.data?.message || 'An error occurred.');
       }
     };
 
