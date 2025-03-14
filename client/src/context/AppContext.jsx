@@ -9,6 +9,12 @@ const AppContextProvider = (props) => {
   axios.defaults.withCredentials = true;
   axios.defaults.baseURL = backendURL;
 
+  if (!backendURL) {
+    console.error(
+      'VITE_BACKEND_URL is not defined in the environment variables.'
+    );
+  }
+
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [userData, setUserData] = useState(false);
 
