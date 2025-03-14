@@ -110,6 +110,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               required
+              autocomplete="current-password"
             />
           </div>
 

@@ -156,6 +156,7 @@ const ResetPassword = () => {
               <input
                 type="password"
                 placeholder="New Password"
+                autocomplete="current-password"
                 required
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
