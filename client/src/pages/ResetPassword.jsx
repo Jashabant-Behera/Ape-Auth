@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext.jsx';
 import { toast } from 'react-toastify';
-import '../style/ResetPassword.css'
+import '../style/ResetPassword.css';
 
 const ResetPassword = () => {
   axios.defaults.withCredentials = true;
@@ -29,7 +29,7 @@ const ResetPassword = () => {
 
       if (data.success) {
         toast.success(data.message);
-        setEmailSent(true); // Fix: Set emailSent instead of email
+        setEmailSent(true);
       } else {
         toast.error(data.message);
       }
@@ -96,78 +96,84 @@ const ResetPassword = () => {
   };
 
   return (
-<div className={`reset-container ${!emailSent ? 'email-stage' : OTPSubmit ? 'password-stage' : 'otp-stage'}`}>
-  <div className="reset-box">
-    <div className="logo-container">
-      <img onClick={() => navigate('/')} src={assets.logo_icon} alt="Logo" className="logo" />
-    </div>
-
-    {/* Email Submission Form */}
-    {!emailSent && (
-      <form onSubmit={onSubmitEmail}>
-        <h1>Reset Password</h1>
-        <p>Enter your registered email address</p>
-        <div className="reset-input">
-          <img src={assets.mail_icon} alt="Mail Icon" />
-          <input
-            type="email"
-            placeholder="Email Id"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+    <div
+      className={`reset-container ${!emailSent ? 'email-stage' : OTPSubmit ? 'password-stage' : 'otp-stage'}`}
+    >
+      <div className="reset-box">
+        <div className="logo-container">
+          <img
+            onClick={() => navigate('/')}
+            src={assets.logo_icon}
+            alt="Logo"
+            className="logo"
           />
         </div>
-        <button type="submit">Submit</button>
-      </form>
-    )}
 
-    {/* OTP Submission Form */}
-    {!OTPSubmit && emailSent && (
-      <form onSubmit={onSubmitOTP}>
-        <h1>Verify OTP</h1>
-        <p>Enter the 6-digit code sent to your email</p>
-        <div className="otp-container" onPaste={handlePaste}>
-          {Array(6)
-            .fill(0)
-            .map((_, index) => (
+        {/* Email Submission Form */}
+        {!emailSent && (
+          <form onSubmit={onSubmitEmail}>
+            <h1>Reset Password</h1>
+            <p>Enter your registered email address</p>
+            <div className="reset-input">
+              <img src={assets.mail_icon} alt="Mail Icon" />
               <input
-                type="text"
-                maxLength="1"
-                key={index}
+                type="email"
+                placeholder="Email Id"
                 required
-                ref={(el) => (inputRefs.current[index] = el)}
-                onInput={(e) => handleInput(e, index)}
-                onKeyDown={(e) => handleKeyDown(e, index)}
-                pattern="\d*"
-                inputMode="numeric"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-            ))}
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    )}
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        )}
 
-    {/* New Password Form */}
-    {OTPSubmit && (
-      <form onSubmit={onSubmitNewPassword}>
-        <h1>Set New Password</h1>
-        <div className="reset-input">
-          <img src={assets.key_icon} alt="Key Icon" />
-          <input
-            type="password"
-            placeholder="New Password"
-            required
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
-        </div>
+        {/* OTP Submission Form */}
+        {!OTPSubmit && emailSent && (
+          <form onSubmit={onSubmitOTP}>
+            <h1>Verify OTP</h1>
+            <p>Enter the 6-digit code sent to your email</p>
+            <div className="otp-container" onPaste={handlePaste}>
+              {Array(6)
+                .fill(0)
+                .map((_, index) => (
+                  <input
+                    type="text"
+                    maxLength="1"
+                    key={index}
+                    required
+                    ref={(el) => (inputRefs.current[index] = el)}
+                    onInput={(e) => handleInput(e, index)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    pattern="\d*"
+                    inputMode="numeric"
+                  />
+                ))}
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        )}
 
-        <button type="submit">Submit</button>
-      </form>
-    )}
-  </div>
-</div>
+        {/* New Password Form */}
+        {OTPSubmit && (
+          <form onSubmit={onSubmitNewPassword}>
+            <h1>Set New Password</h1>
+            <div className="reset-input">
+              <img src={assets.key_icon} alt="Key Icon" />
+              <input
+                type="password"
+                placeholder="New Password"
+                required
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+            </div>
 
+            <button type="submit">Submit</button>
+          </form>
+        )}
+      </div>
+    </div>
   );
 };
 

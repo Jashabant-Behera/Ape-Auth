@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext.jsx';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import '../style/EmailVerify.css'
+import '../style/EmailVerify.css';
 
 const EmailVerify = () => {
   axios.defaults.withCredentials = true;
@@ -54,7 +54,7 @@ const EmailVerify = () => {
       }
 
       const { data } = await axios.post(
-        backendURL + '/api/auth/verifyAccount',
+        `${backendURL}/api/auth/verifyAccount`,
         { OTP }
       );
 

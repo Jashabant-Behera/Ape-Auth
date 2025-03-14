@@ -17,5 +17,4 @@ export const assets = {
   people_icon,
   logo_icon,
   monkey_icon
-
 };
