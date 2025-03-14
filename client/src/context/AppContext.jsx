@@ -5,9 +5,7 @@ import { toast } from 'react-toastify';
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
-  const backendURL =
-    import.meta.env.VITE_BACKEND_URL ||
-    'https://ape-authentication.up.railway.app';
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
 
   // Log the backendURL for debugging
   console.log('Backend URL:', backendURL);
@@ -17,7 +15,7 @@ const AppContextProvider = (props) => {
   axios.defaults.baseURL = backendURL;
 
   const [isLoggedin, setIsLoggedin] = useState(false);
-  const [userData, setUserData] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   const getAuthState = async () => {
     try {
@@ -30,7 +28,7 @@ const AppContextProvider = (props) => {
       if (error.response?.status === 401) {
         // Handle unauthorized error (e.g., log out the user)
         setIsLoggedin(false);
-        setUserData(false);
+        setUserData(null);
         toast.error('Please log in again.');
       } else {
         toast.error(error.response?.data?.message || 'An error occurred.');
@@ -42,12 +40,16 @@ const AppContextProvider = (props) => {
     try {
       const { data } = await axios.get('/api/user/data');
       console.log('User Data Fetched:', data);
-      data.success ? setUserData(data.userData) : toast.error(data.message);
+      if (data.success) {
+        setUserData(data.userData);
+      } else {
+        toast.error(data.message);
+      }
     } catch (error) {
       if (error.response?.status === 401) {
         // Handle unauthorized error (e.g., log out the user)
         setIsLoggedin(false);
-        setUserData(false);
+        setUserData(null);
         toast.error('Please log in again.');
       } else {
         toast.error(error.response?.data?.message || 'An error occurred.');

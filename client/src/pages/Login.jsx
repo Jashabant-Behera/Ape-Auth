@@ -52,7 +52,7 @@ const Login = () => {
         }
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || 'An error occurred.');
     }
   };
 
@@ -87,6 +87,7 @@ const Login = () => {
                 type="text"
                 placeholder="Full Name"
                 required
+                autoComplete="name"
               />
             </div>
           )}
@@ -99,6 +100,7 @@ const Login = () => {
               type="email"
               placeholder="Email Id"
               required
+              autoComplete="email"
             />
           </div>
 
@@ -110,7 +112,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               required
-              autocomplete="current-password"
+              autoComplete="current-password"
             />
           </div>
 
