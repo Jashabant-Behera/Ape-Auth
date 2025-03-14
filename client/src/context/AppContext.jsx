@@ -13,6 +13,7 @@ const AppContextProvider = (props) => {
     console.error(
       'VITE_BACKEND_URL is not defined in the environment variables.'
     );
+    console.log('Backend URL:', import.meta.env.VITE_BACKEND_URL);
   }
 
   const [isLoggedin, setIsLoggedin] = useState(false);
