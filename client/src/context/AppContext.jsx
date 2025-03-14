@@ -5,9 +5,7 @@ import { toast } from 'react-toastify';
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
-  const backendURL =
-    import.meta.env.VITE_BACKEND_URL ||
-    'https://ape-authentication.up.railway.app';
+  const backendURL = import.meta.env.VITE_BACKEND_URL || 'https://ape-authentication.up.railway.app';
 
   // Log the backendURL for debugging
   console.log('Backend URL:', backendURL);
@@ -27,7 +25,14 @@ const AppContextProvider = (props) => {
         getUserData();
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || 'An error occurred.');
+      if (error.response?.status === 401) {
+        // Handle unauthorized error (e.g., log out the user)
+        setIsLoggedin(false);
+        setUserData(false);
+        toast.error('Please log in again.');
+      } else {
+        toast.error(error.response?.data?.message || 'An error occurred.');
+      }
     }
   };
 
