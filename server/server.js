@@ -23,7 +23,7 @@ if (
 connectDB();
 
 const allowedorigins = [
-	"https://ape-auth-ngryf6pyj-jashabant-beheras-projects.vercel.app",
+	"https://ape-auth-hd990r2lx-jashabant-beheras-projects.vercel.app",
 	"http://localhost:5173",
 ];
 
