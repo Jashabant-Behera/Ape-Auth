@@ -5,9 +5,9 @@ import { toast } from 'react-toastify';
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
-  axios.defaults.withCredentials = true;
-
   const backendURL = import.meta.env.VITE_BACKEND_URL;
+  axios.defaults.withCredentials = true;
+  axios.defaults.baseURL = backendURL;
 
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [userData, setUserData] = useState(false);
