@@ -13,11 +13,11 @@ const port = process.env.PORT || 4000;
 
 connectDB();
 
-const allowedOrigins = ["https://ape-authentication.up.railway.app", "http://localhost:5174"];
+// const allowedOrigins = ["https://ape-authentication.up.railway.app", "http://localhost:5174"];
 
 app.use(
 	cors({
-		origin: allowedOrigins,
+		origin: 'https://ape-authentication.up.railway.app',
 		credentials: true,
 	})
 );
