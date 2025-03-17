@@ -45,11 +45,12 @@ export const signup = async (req, res) => {
 			maxAge: 7 * 24 * 60 * 60 * 1000,
 		});
 
+		const frontendurl = "https://ape-auth.vercel.app/login"
 		const mailOptions = {
 			from: process.env.SENDER_EMAIL,
 			to: email,
 			subject: "Welcome Message",
-			html: WELCOME_TEMPLATE.replace("{{username}}", user.name),
+			html: WELCOME_TEMPLATE.replace("{{username}}", user.name).replace("{{frontend_url}}", frontendurl),
 		};
 
 		await transporter.sendMail(mailOptions);
