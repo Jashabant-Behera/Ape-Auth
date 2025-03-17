@@ -19,7 +19,7 @@ const AppContextProvider = (props) => {
 
   const getAuthState = async () => {
     try {
-      const { data } = await axios.get('/api/auth/isAuth');
+      const { data } = await axios.get('https://ape-authentication.up.railway.app/api/auth/isAuth');
       if (data.success) {
         setIsLoggedin(true);
         getUserData();
