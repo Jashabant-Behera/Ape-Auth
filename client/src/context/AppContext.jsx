@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
-  const backendURL = 'https://ape-authentication.up.railway.app/api/auth';
+  const backendURL = 'https://ape-authentication.up.railway.app';
 
   // Log the backendURL for debugging
   console.log('Backend URL:', backendURL);
