@@ -57,9 +57,9 @@ const AppContextProvider = (props) => {
     }
   };
 
-  useEffect(() => {
-    getAuthState();
-  }, []); // Empty dependency array ensures this runs only once
+  // useEffect(() => {
+  //   getAuthState();
+  // }, []); // Empty dependency array ensures this runs only once
 
   const value = {
     backendURL,
