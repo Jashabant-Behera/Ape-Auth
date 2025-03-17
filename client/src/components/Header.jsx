@@ -13,7 +13,7 @@ const Header = () => {
 
       <h2 className="heading2">
         It's The Wild Web Ape . . .{' '}
-        {userData ? userData.name : 'But First, Prove'} You’re a Trustworthy
+        {userData ? userData.name.toUpperCase() : 'But First, Prove'} You’re a Trustworthy
         Ape!
       </h2>
 
