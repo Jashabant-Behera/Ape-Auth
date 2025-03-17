@@ -49,7 +49,7 @@ export const signup = async (req, res) => {
 			from: process.env.SENDER_EMAIL,
 			to: email,
 			subject: "Welcome Message",
-			html: WELCOME_TEMPLATE,
+			html: WELCOME_TEMPLATE.replace("{{username}}", user.name),
 		};
 
 		await transporter.sendMail(mailOptions);
