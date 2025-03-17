@@ -13,7 +13,7 @@ const port = process.env.PORT || 4000;
 
 connectDB();
 
-const allowedOrigins = ["https://ape-auth.vercel.app", "http://localhost:5174"];
+const allowedOrigins = ["https://ape-authentication.up.railway.app", "http://localhost:5174"];
 
 app.use(
 	cors({
