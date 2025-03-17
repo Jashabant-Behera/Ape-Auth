@@ -6,21 +6,27 @@ export const getUserData = async (req, res) => {
 	try {
 		const { userId } = req.body;
 
-		const user = await userModel.findById(userId);
-
-		if (!user) {
-			return res.json({ success: false, message: "User not found" });
+		if (!userId) {
+			return res
+				.status(400)
+				.json({ success: false, message: "User ID is required" });
 		}
 
-		return res.json({
-			success: true,
-			userData: {
-				name: user.name,
-				email: user.email,
-				isAccountVerified: user.isAccountVerified,
-			},
-		});
+		const user = await userModel
+			.findById(userId)
+			.select("name email isAccountVerified");
+
+		if (!user) {
+			return res
+				.status(404)
+				.json({ success: false, message: "User not found" });
+		}
+
+		return res.json({ success: true, userData: user });
 	} catch (error) {
-		return res.status(500).json({ success: false, message: error, message });
+		console.error(error);
+		return res
+			.status(500)
+			.json({ success: false, message: "Internal server error" });
 	}
 };
