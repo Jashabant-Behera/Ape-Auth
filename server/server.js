@@ -17,7 +17,7 @@ connectDB();
 
 app.use(
 	cors({
-		origin: 'https://ape-authentication.up.railway.app',
+		origin: 'https://ape-auth.vercel.app',
 		credentials: true,
 	})
 );
