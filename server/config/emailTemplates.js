@@ -314,7 +314,7 @@ export const WELCOME_TEMPLATE = `
                       </tr>
                       <tr>
                         <td style="padding: 20px 0 24px;">
-                          <a href="{{dashboard_url}}" class="button">Enter the Jungle</a>
+                          <a href="https://ape-auth.vercel.app/login" class="button">Enter the Jungle</a>
                         </td>
                       </tr>
                       <tr>
