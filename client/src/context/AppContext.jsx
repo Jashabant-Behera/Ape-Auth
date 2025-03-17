@@ -1,65 +1,63 @@
-import React, { createContext, useEffect, useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import React, { createContext, useEffect, useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
-  const backendURL = 'https://ape-authentication.up.railway.app';
+  const backendURL = "https://ape-authentication.up.railway.app";
+  console.log("Backend URL:", backendURL);
 
-  // Log the backendURL for debugging
-  console.log('Backend URL:', backendURL);
-
-  // Set Axios defaults
   axios.defaults.withCredentials = true;
   axios.defaults.baseURL = backendURL;
 
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [userData, setUserData] = useState(null);
 
+  const handleAuthError = (error) => {
+    if (error.response?.status === 401) {
+      setIsLoggedin(false);
+      setUserData(null);
+      toast.error("Please log in again.");
+    } else {
+      toast.error(error.response?.data?.message || "An error occurred.");
+    }
+  };
+
   const getAuthState = async () => {
     try {
-      const { data } = await axios.get('https://ape-authentication.up.railway.app/api/auth/isAuth');
+      const token = localStorage.getItem("token");
+      const { data } = await axios.get(`/api/auth/isAuth`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (data.success) {
         setIsLoggedin(true);
         getUserData();
       }
     } catch (error) {
-      if (error.response?.status === 401) {
-        // Handle unauthorized error (e.g., log out the user)
-        setIsLoggedin(false);
-        setUserData(null);
-        toast.error('Please log in again.');
-      } else {
-        toast.error(error.response?.data?.message || 'An error occurred.');
-      }
+      handleAuthError(error);
     }
   };
 
   const getUserData = async () => {
     try {
-      const { data } = await axios.get('/api/user/data');
-      console.log('User Data Fetched:', data);
+      const token = localStorage.getItem("token");
+      const { data } = await axios.get(`/api/user/data`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (data.success) {
         setUserData(data.userData);
       } else {
         toast.error(data.message);
       }
     } catch (error) {
-      if (error.response?.status === 401) {
-        // Handle unauthorized error (e.g., log out the user)
-        setIsLoggedin(false);
-        setUserData(null);
-        toast.error('Please log in again.');
-      } else {
-        toast.error(error.response?.data?.message || 'An error occurred.');
-      }
+      handleAuthError(error);
     }
   };
 
-  // useEffect(() => {
-  //   getAuthState();
-  // }, []); 
+  useEffect(() => {
+    getAuthState();
+  }, []);
 
   const value = {
     backendURL,
