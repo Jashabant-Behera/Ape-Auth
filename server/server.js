@@ -41,16 +41,10 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 
-// Route Not Found Middleware
-app.use((req, res) => {
-	res.status(404).json({ success: false, message: "Route not found" });
+app.get('/api/auth/isAuth', (req, res) => {
+    res.json({ message: 'CORS is working!' });
 });
 
-// Global Error Handling Middleware
-app.use((err, req, res, next) => {
-	console.error(err.stack);
-	res.status(500).json({ success: false, message: "Something went wrong!" });
-});
 
 // Start the Server
 app.listen(port, () => {
