@@ -19,7 +19,7 @@ const userAuth = async (req, res, next) => {
 
 		if (tokenDecode.id) {
 			req.body.userId = tokenDecode.id;
-			next(); // Pass control to the next middleware or route handler
+			next();
 		} else {
 			return res.status(401).json({
 				success: false,

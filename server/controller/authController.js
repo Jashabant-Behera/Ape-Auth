@@ -7,6 +7,7 @@ import transporter from "../config/nodemailer.js";
 import {
 	EMAIL_VERIFY_TEMPLATE,
 	PASSWORD_RESET_TEMPLATE,
+	WELCOME_TEMPLATE
 } from "../config/emailTemplates.js";
 
 export const signup = async (req, res) => {
@@ -48,7 +49,7 @@ export const signup = async (req, res) => {
 			from: process.env.SENDER_EMAIL,
 			to: email,
 			subject: "Welcome Message",
-			text: `Welcome. Your account has been created with the email id: ${email}`,
+			html: WELCOME_TEMPLATE,
 		};
 
 		await transporter.sendMail(mailOptions);

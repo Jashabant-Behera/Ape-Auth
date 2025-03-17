@@ -72,7 +72,6 @@
   color: #d0d0d0;
 }
 
-
 .auth-input input:-webkit-autofill {
   background: rgba(255, 255, 255, 0.092) !important; 
   -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.092) inset !important;
