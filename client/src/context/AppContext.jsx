@@ -14,15 +14,15 @@ const AppContextProvider = (props) => {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [userData, setUserData] = useState(null);
 
-  const handleAuthError = (error) => {
-    if (error.response?.status === 401) {
-      setIsLoggedin(false);
-      setUserData(null);
-      toast.error("Please log in again.");
-    } else {
-      toast.error(error.response?.data?.message || "An error occurred.");
-    }
-  };
+  // const handleAuthError = (error) => {
+  //   if (error.response?.status === 401) {
+  //     setIsLoggedin(false);
+  //     setUserData(null);
+  //     toast.error("Please log-in.");
+  //   } else {
+  //     toast.error(error.response?.data?.message || "An error occurred.");
+  //   }
+  // };
 
   const getAuthState = async () => {
     try {
