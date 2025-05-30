@@ -1,4 +1,4 @@
-Ape-Auth 🦍
+# Ape-Auth 🦍
 
 Ape-Auth is a full-stack authentication system built with a custom backend and modern frontend. It provides essential authentication features such as user signup, login, logout, email verification via OTP, password reset, and protected route access using JWT.
 
