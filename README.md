@@ -94,7 +94,4 @@ Future Improvements 🌱
 - Add role-based access (admin/user)
 - Add user profile picture and edit profile feature
 
-Author ✍️
-
-Jashabant Behera - Full Stack Developer
 
